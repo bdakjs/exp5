@@ -1,0 +1,16 @@
+hive
+create database sak;
+
+show databases;
+create table employee(eid int,name string,salary int,destination string)
+    > comment'Employee Details'
+    > row format delimited
+    > fields terminated by ','
+    > lines terminated by '\n'
+    > STORED AS TEXTFILE;
+LOAD DATA LOCAL INPATH'/home/hadoop/Desktop/text.txt'OVERWRITE INTO TABLE employee;
+select * from employee;
+SELECT * FROM employee WHERE salary>30000;
+SELECT eid,name,salary,destination FROM employee ORDER BY destination;
+SELECT destination,count(*) FROM employee GROUP BY destination;
+
